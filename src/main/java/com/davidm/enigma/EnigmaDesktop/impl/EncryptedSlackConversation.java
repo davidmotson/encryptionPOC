@@ -39,7 +39,7 @@ public class EncryptedSlackConversation implements Conversation {
 		this.session = session;
 		session.addMessagePostedListener((event, eventSession) -> {
 			if(event.getChannel().getId().equals(userChannel.getId())){
-				if (event.getSender().getId().equals(user.getAlias())) {
+				if (event.getSender().getId().equals(user.getAddress())) {
 					String message = encryptionManager.decrypt(event.getMessageContent(), user);
 					messageConsumers.forEach(x -> x.accept(message));
 				}
