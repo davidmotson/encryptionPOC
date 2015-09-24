@@ -49,6 +49,7 @@ public class EncryptedSlackConversationProvider implements ConversationProvider,
 	@Override
 	public List<User> getPossibleFriends() {
 		return session.getUsers().stream()
+				.filter(user -> user.getRealName() != null)
 				.map(user -> new User(user.getId(), user.getRealName()))
 				.collect(Collectors.toList());
 	}
