@@ -38,19 +38,24 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.igniterealtime.smack</groupId>
-			<artifactId>smack-java7</artifactId>
-			<version>4.1.4</version>
+			<groupId>org.glassfish.tyrus.bundles</groupId>
+			<artifactId>tyrus-standalone-client</artifactId>
+			<version>1.8.3</version>
 		</dependency>
 		<dependency>
-			<groupId>org.igniterealtime.smack</groupId>
-			<artifactId>smack-extensions</artifactId>
-			<version>4.1.4</version>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.igniterealtime.smack</groupId>
-			<artifactId>smack-tcp</artifactId>
-			<version>4.1.4</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5</version>
 		</dependency>
 	</dependencies>
 	<build>

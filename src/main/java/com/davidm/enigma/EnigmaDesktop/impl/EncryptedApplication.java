@@ -46,11 +46,12 @@ public class EncryptedApplication implements Application {
 				running = false;
 				break;
 			case "add":
-				System.out.println("Enter the friend's gmail address");
-				String address = keyboard.nextLine();
-				System.out.println("Enter a name");
-				String alias = keyboard.nextLine();
-				User newFriend = new User(address, alias);
+				List<User> possibleFriends = conversationProvider.getPossibleFriends();
+				System.out.println("Enter the number of a Possible Friend:");
+				for(int i = 0;i < possibleFriends.size(); i++){
+					System.out.println(i + ". " + possibleFriends.get(i).getAlias());
+				}
+				User newFriend = possibleFriends.get(keyboard.nextInt());
 				System.out.println("Enter a seed (numeric)");
 				long seed = keyboard.nextLong();
 				keyboard.nextLine();

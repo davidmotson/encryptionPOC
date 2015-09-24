@@ -43,22 +43,22 @@ public class PadEncryptionManager implements EncryptionManager {
 
 	@Override
 	public String decrypt(String message, User from) {
-		val cryptStart = message.indexOf("::::") + 4;
-		if(cryptStart == 3){
-			return message;
+		val cryptStart = message.indexOf("::::");
+		if(cryptStart == -1){
+			return "(unencrypted) " + message;
 		}
 		try {
-			val keyRef = Integer.parseInt(message.substring(0, cryptStart - 4));
+			val keyRef = Integer.parseInt(message.substring(0, cryptStart));
 			val key = keyProvider.rawKeyByRef(keyRef, from);
 			val cryptBytes = Base64.getDecoder().decode(
-					message.substring(cryptStart));
+					message.substring(cryptStart + 4));
 			val output = new byte[cryptBytes.length];
 			for (int i = 0; i < cryptBytes.length; i++) {
 				output[i] = (byte) (cryptBytes[i] ^ key[i]);
 			}
 			return new String(output, StandardCharsets.UTF_8);
 		} catch (NumberFormatException e) {
-			return message;
+			return "(unencrypted) " + message;
 		}
 	}
 }
